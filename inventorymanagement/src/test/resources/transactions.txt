@@ -19,3 +19,7 @@ updateSell Food01 5
 updateSell Mobile01 4
 updateSell Med01 10
 report
+updateSell Food01 10
+updateSellPrice Food01 2.49
+updateSell Food01 10
+report

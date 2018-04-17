@@ -21,16 +21,22 @@ public class InventoryTest {
 			while (scanner.hasNextLine()) {
 				new InventoryService().processRequest(scanner.nextLine());
 			}
-			Assert.assertEquals(""
-					, -724.75
+			Assert.assertEquals(-724.75
 					,InventoryRepository.getInstance().getHistReportPnlList().get(1).getProfit()
 					, 0.1);
+			Assert.assertEquals(35.3
+					, InventoryRepository.getInstance().getHistReportPnlList().get(2).getProfit()
+					, 0.0);
 			 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
+	@Test(expected = IllegalArgumentException.class)
+	public void invalidCreateCommand() {
+		new InventoryService().processRequest("create itemName 1.0");
+	}
 	
 
 }
