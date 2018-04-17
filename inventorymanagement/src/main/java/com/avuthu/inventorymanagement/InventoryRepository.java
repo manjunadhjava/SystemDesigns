@@ -1,6 +1,9 @@
 package com.avuthu.inventorymanagement;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -17,6 +20,8 @@ public class InventoryRepository {
 	private Map<String, Product> productMap = new TreeMap<>();
 
 	private double profitSinceLastReport;
+	
+	private List<HistReportPnL> histReportPnlList = new ArrayList<>();
 
 	public static InventoryRepository getInstance() {
 		return instance;
@@ -99,6 +104,11 @@ public class InventoryRepository {
 		System.out.println("Profit since previous report "+ new BigDecimal(profitSinceLastReport).setScale(2, BigDecimal.ROUND_HALF_UP).toString());
 		
 		//reset
+		histReportPnlList.add(new HistReportPnL(new Date(), profitSinceLastReport));
 		profitSinceLastReport = 0;
+	}
+
+	public List<HistReportPnL> getHistReportPnlList() {
+		return histReportPnlList;
 	}
 }
