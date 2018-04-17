@@ -7,21 +7,21 @@ import java.util.TreeMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Inventory {
-	private static final Logger LOG = LoggerFactory.getLogger(Inventory.class.getName());
+public class InventoryRepository {
+	private static final Logger LOG = LoggerFactory.getLogger(InventoryRepository.class.getName());
 
-	private Inventory() {
+	private InventoryRepository() {
 	}
 
-	private static final Inventory instance = new Inventory();
+	private static final InventoryRepository instance = new InventoryRepository();
 	private Map<String, Product> productMap = new TreeMap<>();
 
 	private double profitSinceLastReport;
 
-	public static Inventory getInstance() {
+	public static InventoryRepository getInstance() {
 		return instance;
 	}
-
+	
 	public void createProduct(Product product) {
 		if (productMap.get(product.getName()) != null) {
 			throw new IllegalStateException("product already present in inventory");

@@ -1,13 +1,13 @@
 package com.avuthu.inventorymanagement.action;
 
-import com.avuthu.inventorymanagement.Inventory;
+import com.avuthu.inventorymanagement.InventoryRepository;
 
 public abstract class InventoryAction {
-	protected Inventory inventory;
+	protected InventoryRepository inventory;
 	public static final String SPACE = " ";
 	
 	InventoryAction() {
-		inventory = Inventory.getInstance();
+		inventory = InventoryRepository.getInstance();
 	}
 	
 	protected String[] getCommandTokens(String command) {
